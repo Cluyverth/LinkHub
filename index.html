@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Hub</title>
+
+    <!-- Retro Pixel Font -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons (v6.5.1) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Main Phone Container -->
+    <div class="phone">
+
+        <!-- Decorative Charm (Key chain) -->
+        <div class="charm-container">
+            <div class="charm-string"></div>
+            <div class="charm-pokemon">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/94.gif"
+                    alt="Gengar Charm">
+            </div>
+        </div>
+
+        <!-- Upper Speaker Slot -->
+        <div class="speaker-slot"></div>
+
+        <!-- Screen Area -->
+        <div class="screen">
+
+            <!-- Status Bar (Signal, Clock, Battery) -->
+            <div class="status-bar">
+                <span><i class="fas fa-signal"></i> 5G</span>
+                <span id="clock">--:--</span>
+                <span>98% <i class="fas fa-battery-full"></i></span>
+            </div>
+
+            <!-- User Profile Section -->
+            <div class="profile">
+                <div class="avatar"></div>
+                <h1>Odryin</h1>
+                <p class="subtitle">Esses são meus links 👇</p>
+            </div>
+
+            <!-- Links Navigation -->
+            <div class="links-container">
+
+                <!-- YouTube Accordion Button -->
+                <div class="link-btn" id="yt-accordion-btn">
+                    <i class="fa-brands fa-youtube"></i>
+                    Canais do YouTube
+                    <i id="yt-arrow" class="fa-solid fa-chevron-down"></i>
+                </div>
+
+                <!-- YouTube Sub-menu (Hidden by default) -->
+                <div id="youtube-list" class="sub-menu">
+                    <a href="https://youtube.com/@Odryin" target="_blank" class="link-btn sub-link">
+                        <i class="fa-solid fa-play"></i> Principal
+                    </a>
+                    <a href="https://youtube.com/@OdryinAFK" target="_blank" class="link-btn sub-link">
+                        <i class="fa-solid fa-video"></i> Vlogs & Lives IRL
+                    </a>
+                    <a href="https://youtube.com/@OdryinCortes" target="_blank" class="link-btn sub-link">
+                        <i class="fa-solid fa-scissors"></i> Canal de Cortes
+                    </a>
+                </div>
+
+                <!-- Direct Links -->
+                <a href="https://kick.com/Odryin" target="_blank" class="link-btn">
+                    <i class="fab fa-kickstarter-k"></i>
+                    Kick
+                </a>
+
+                <a href="https://twitch.tv/Odryin" target="_blank" class="link-btn">
+                    <i class="fa-brands fa-twitch"></i>
+                    Twitch
+                </a>
+
+                <a href="https://x.com/Odryin" target="_blank" class="link-btn">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    Twitter / X
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Home Button -->
+        <div class="home-btn" id="home-btn"">
+            <div class=" home-square"></div>
+    </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script src="js/script.js" defer></script>
+</body>
+
+</html>

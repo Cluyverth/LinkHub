@@ -1,0 +1,374 @@
+/* -----------------------------------------------------------
+   GLOBAL VARIABLES & RESET
+----------------------------------------------------------- */
+:root {
+    --case-color: #1c1c1c;
+    /* Glossy Black */
+    --accent-red: #ff5555;
+    /* Charm String Color */
+
+    /* Variáveis Dinâmicas (Mudam no Light Mode) */
+    --screen-bg: #111;
+    /* Fundo da tela */
+    --text-color: #fff;
+    /* Cor do texto */
+    --profile-bg: linear-gradient(#222, #111);
+    /* Fundo do perfil */
+    --btn-bg: rgba(255, 255, 255, 0.05);
+    --btn-border: rgba(255, 255, 255, 0.1);
+    --btn-hover: rgba(255, 255, 255, 0.2);
+    --x-icon-color: #fff;
+    /* Ícone do X/Twitter */
+    --status-bar-color: #fff;
+    --border-color: #333;
+    /* Linhas divisórias */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    /* Dotted background pattern */
+    background-image: radial-gradient(#444 15%, transparent 16%), radial-gradient(#444 15%, transparent 16%);
+    background-size: 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'VT323', monospace;
+    overflow: hidden;
+}
+
+/* -----------------------------------------------------------
+   PHONE CHASSIS
+----------------------------------------------------------- */
+.phone {
+    width: 320px;
+    height: 600px;
+    background-color: var(--case-color);
+    border-radius: 40px;
+    padding: 15px;
+    position: relative;
+    box-shadow:
+        inset 0 0 10px rgba(255, 255, 255, 0.2),
+        0 20px 50px rgba(0, 0, 0, 0.8);
+    border: 4px solid #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.speaker-slot {
+    width: 60px;
+    height: 6px;
+    background: #333;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #555;
+}
+
+/* -----------------------------------------------------------
+   DECORATIVE CHARM (GENGAR)
+----------------------------------------------------------- */
+.charm-container {
+    position: absolute;
+    top: 50px;
+    left: -35px;
+    z-index: 10;
+    transform-origin: top center;
+    animation: swing 3s infinite ease-in-out;
+}
+
+.charm-string {
+    width: 2px;
+    height: 60px;
+    background: var(--accent-red);
+    margin: 0 auto;
+    position: relative;
+}
+
+.charm-string::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -2px;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-red);
+    border-radius: 50%;
+}
+
+.charm-pokemon img {
+    width: 60px;
+    image-rendering: pixelated;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(5deg);
+    }
+}
+
+/* -----------------------------------------------------------
+   SCREEN & UI ELEMENTS
+----------------------------------------------------------- */
+.screen {
+    width: 90%;
+    height: 465px;
+    background-color: var(--screen-bg);
+    /* Use variable */
+    color: var(--text-color);
+    /* Use variable */
+    border: 2px solid #333;
+    border-radius: 4px;
+    position: relative;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+
+    /* Transição suave para o modo claro */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.screen::-webkit-scrollbar {
+    display: none;
+}
+
+/* Screen Reflection Effect */
+.screen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(rgba(255, 255, 255, 0.05), transparent);
+    pointer-events: none;
+}
+
+.status-bar {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: var(--status-bar-color);
+    /* Use variable */
+    border-bottom: 1px solid var(--border-color);
+    /* Use variable */
+    transition: all 0.3s ease;
+}
+
+/* -----------------------------------------------------------
+   PROFILE SECTION
+----------------------------------------------------------- */
+.profile {
+    text-align: center;
+    padding: 20px 10px;
+    background: var(--profile-bg);
+    /* Use variable */
+    transition: background 0.3s ease;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin-bottom: 10px;
+    background-color: #000;
+    background-image: url('https://github.com/cluyverth.png');
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--text-color);
+}
+
+p.subtitle {
+    margin: 5px 0 0 0;
+    color: #aaa;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+/* -----------------------------------------------------------
+   LINKS & BUTTONS
+----------------------------------------------------------- */
+.links-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 5;
+}
+
+.link-btn {
+    background: var(--btn-bg);
+    /* Use variable */
+    border: 1px solid var(--btn-border);
+    /* Use variable */
+    color: var(--text-color);
+    /* Use variable */
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    backdrop-filter: blur(2px);
+}
+
+.link-btn:hover {
+    background: var(--btn-hover);
+    /* Use variable */
+    transform: scale(1.02);
+}
+
+.link-btn i {
+    width: 30px;
+    text-align: center;
+    margin-right: 10px;
+    font-size: 22px;
+    transition: color 0.3s ease;
+}
+
+/* Specific Icon Colors */
+.fa-youtube {
+    color: #ff0000;
+}
+
+.fa-twitch {
+    color: #9146ff;
+}
+
+.fa-kickstarter-k {
+    color: #53fc18;
+}
+
+.fa-x-twitter {
+    color: var(--x-icon-color);
+    /* Use variable */
+}
+
+/* Sub-menu (Accordion) Styles */
+.sub-menu {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 20px;
+    padding-left: 10px;
+    border-left: 2px dashed #555;
+    animation: fadeIn 0.3s ease;
+}
+
+.sub-link {
+    background: rgba(255, 0, 0, 0.1);
+    font-size: 18px;
+    padding: 8px 12px;
+}
+
+.fa-chevron-down,
+.fa-chevron-up {
+    font-size: 16px !important;
+    color: #aaa;
+    margin-left: auto;
+    width: auto !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -----------------------------------------------------------
+   HOME BUTTON
+----------------------------------------------------------- */
+.home-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #111;
+    border: 2px solid #333;
+    margin-top: auto;
+    margin-bottom: 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.home-square {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #555;
+    border-radius: 4px;
+}
+
+.home-btn:active {
+    background: #000;
+    transform: scale(0.95);
+}
+
+/* -----------------------------------------------------------
+   LIGHT MODE (Ativado pelo JS)
+----------------------------------------------------------- */
+.screen.light-mode {
+    --screen-bg: #f0f2f5;
+    /* Fundo claro */
+    --text-color: #111;
+    /* Texto escuro */
+    --profile-bg: linear-gradient(#e0e0e0, #f0f2f5);
+    /* Header claro */
+    --btn-bg: #ffffff;
+    /* Botões brancos */
+    --btn-border: #ccc;
+    /* Borda visível */
+    --btn-hover: #e6e6e6;
+    /* Hover sutil */
+    --x-icon-color: #000;
+    /* X preto */
+    --status-bar-color: #000;
+    /* Status bar preta */
+    --border-color: #ccc;
+}
+
+/* Ajustes específicos para o modo claro */
+.screen.light-mode .subtitle {
+    color: #555;
+}
+
+.screen.light-mode .sub-menu {
+    border-left-color: #aaa;
+}
+
+.screen.light-mode .status-bar {
+    background: rgba(0, 0, 0, 0.05);
+}
