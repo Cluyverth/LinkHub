@@ -43,16 +43,16 @@ body {
    PHONE CHASSIS
 ----------------------------------------------------------- */
 .phone {
-    width: 320px;
-    height: 600px;
+    width: 380px;
+    height: 750px;
     background-color: var(--case-color);
-    border-radius: 40px;
+    border-radius: 45px;
     padding: 15px;
     position: relative;
     box-shadow:
         inset 0 0 10px rgba(255, 255, 255, 0.2),
         0 20px 50px rgba(0, 0, 0, 0.8);
-    border: 4px solid #000;
+    border: 6px solid #000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,6 +65,7 @@ body {
     border-radius: 10px;
     margin-bottom: 20px;
     border: 1px solid #555;
+    flex-shrink: 0;
 }
 
 /* -----------------------------------------------------------
@@ -122,12 +123,11 @@ body {
    SCREEN & UI ELEMENTS
 ----------------------------------------------------------- */
 .screen {
-    width: 90%;
-    height: 465px;
+    width: 92%;
+    flex: 1;
+    margin-bottom: 15px;
     background-color: var(--screen-bg);
-    /* Use variable */
     color: var(--text-color);
-    /* Use variable */
     border: 2px solid #333;
     border-radius: 4px;
     position: relative;
@@ -135,8 +135,6 @@ body {
     display: flex;
     flex-direction: column;
     scrollbar-width: none;
-
-    /* Transição suave para o modo claro */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -163,10 +161,9 @@ body {
     justify-content: space-between;
     font-size: 16px;
     color: var(--status-bar-color);
-    /* Use variable */
     border-bottom: 1px solid var(--border-color);
-    /* Use variable */
     transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
 /* -----------------------------------------------------------
@@ -176,8 +173,8 @@ body {
     text-align: center;
     padding: 20px 10px;
     background: var(--profile-bg);
-    /* Use variable */
     transition: background 0.3s ease;
+    flex-shrink: 0;
 }
 
 .avatar {
@@ -221,11 +218,8 @@ p.subtitle {
 
 .link-btn {
     background: var(--btn-bg);
-    /* Use variable */
     border: 1px solid var(--btn-border);
-    /* Use variable */
     color: var(--text-color);
-    /* Use variable */
     text-decoration: none;
     padding: 12px 15px;
     border-radius: 10px;
@@ -239,7 +233,6 @@ p.subtitle {
 
 .link-btn:hover {
     background: var(--btn-hover);
-    /* Use variable */
     transform: scale(1.02);
 }
 
@@ -266,7 +259,6 @@ p.subtitle {
 
 .fa-x-twitter {
     color: var(--x-icon-color);
-    /* Use variable */
 }
 
 /* Sub-menu (Accordion) Styles */
@@ -323,6 +315,7 @@ p.subtitle {
     align-items: center;
     cursor: pointer;
     transition: 0.1s;
+    flex-shrink: 0;
 }
 
 .home-square {
@@ -342,25 +335,16 @@ p.subtitle {
 ----------------------------------------------------------- */
 .screen.light-mode {
     --screen-bg: #f0f2f5;
-    /* Fundo claro */
     --text-color: #111;
-    /* Texto escuro */
     --profile-bg: linear-gradient(#e0e0e0, #f0f2f5);
-    /* Header claro */
     --btn-bg: #ffffff;
-    /* Botões brancos */
     --btn-border: #ccc;
-    /* Borda visível */
     --btn-hover: #e6e6e6;
-    /* Hover sutil */
     --x-icon-color: #000;
-    /* X preto */
     --status-bar-color: #000;
-    /* Status bar preta */
     --border-color: #ccc;
 }
 
-/* Ajustes específicos para o modo claro */
 .screen.light-mode .subtitle {
     color: #555;
 }
@@ -371,4 +355,43 @@ p.subtitle {
 
 .screen.light-mode .status-bar {
     background: rgba(0, 0, 0, 0.05);
+}
+
+/* -----------------------------------------------------------
+   RESPONSIVIDADE (MOBILE FULL SCREEN)
+----------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    body {
+        background: var(--case-color);
+        align-items: flex-start;
+    }
+
+    .phone {
+        width: 100%;
+        height: 100vh;
+        max-width: none;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .screen {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 0;
+        border: none;
+        border-radius: 0;
+        background-color: var(--screen-bg);
+    }
+
+    .speaker-slot,
+    .home-btn,
+    .charm-container {
+        display: none;
+    }
+
+    .status-bar {
+        padding-top: 10px;
+    }
 }
